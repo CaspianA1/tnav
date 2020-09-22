@@ -43,6 +43,7 @@ char* select_file() {
 				strcpy(path, cwd);
 				strcat(path, "/");
 				strcat(path, file);
+				free(files); // file ptr copied over by this point
 				char* heap_path = calloc(strlen(path), sizeof(char));
 				strcpy(heap_path, path);
 				return heap_path;
@@ -66,7 +67,6 @@ char* select_file() {
 	}
 	return ""; // to avoid warning
 }
-
 
 int main() {
 	char* file = select_file();
